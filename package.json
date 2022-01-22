@@ -1,0 +1,20 @@
+{
+  "name": "webpack5-dynamic-public-path",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "web-daddy",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://https://github.com/dxh-vip/webpack5-dynamic-public-path.git"
+  },
+  "keywords": [
+    "webpack",
+    "dynamic",
+    "publicPath"
+  ]
+}

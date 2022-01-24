@@ -11,7 +11,7 @@ function buf(path, source) {
   var buf = [];
   buf.push(source);
   buf.push("");
-  buf.push("// Dynamic assets path override (webpack5-dynamic-public-path)");
+  buf.push("// Dynamic assets path override (dynamic-public-path-plugin)");
   buf.push(`
         if(typeof window !== 'undefined') {
             __webpack_require__.p = (${path}) || "";

@@ -2,3 +2,5 @@
 - A plugin that lets you override the Webpack modules public path in webpage runtime.
 ## 1.1.0
 - Compatible with webpack4 processing
+## 1.1.1 
+- Document description update

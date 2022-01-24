@@ -10,7 +10,7 @@
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "https://github.com/dxh-vip/webpack5-dynamic-public-path.git"
+    "url": "https://github.com/dxh-vip/dynamic-public-path-plugin.git"
   },
   "keywords": [
     "webpack",

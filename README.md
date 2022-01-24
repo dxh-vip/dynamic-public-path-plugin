@@ -1,17 +1,18 @@
-# webpack5-dynamic-public-path
+# dynamic-public-path-plugin
 
 A plugin that lets you override the Webpack modules public path in webpage runtime.
 plugin : webpack-runtime-public-path-plugin Upgraded version, compatible with webpack5
+
 # Configuration
 
 ```
-const webpackDynamicPublicPath = require("webpack5-dynamic-public-path")
+const dynamicPublicPathPlugin = require("dynamic-public-path-plugin")
 ```
 
 ```json
     plugins: [
         ...
-        new webpackDynamicPublicPath({
+        new dynamicPublicPathPlugin({
             dynamicPublicPath: "'/foo/bar/'"
         })
         ...

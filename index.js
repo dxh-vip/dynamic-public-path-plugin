@@ -5,7 +5,7 @@
 
 function DynamicPublicPath(options) {
   this.options = options;
-  this._name = "webpack5DynamicPublicPath";
+  this._name = "dynamicPublicPathPlugin";
 }
 function buf(path, source) {
   var buf = [];

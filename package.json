@@ -1,6 +1,6 @@
 {
-  "name": "webpack5-dynamic-public-path",
-  "version": "1.0.0",
+  "name": "dynamic-public-path-plugin",
+  "version": "2.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -10,7 +10,7 @@
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "https://https://github.com/dxh-vip/webpack5-dynamic-public-path.git"
+    "url": "https://https://github.com/dxh-vip/webpack5-dynamic-public-path"
   },
   "keywords": [
     "webpack",

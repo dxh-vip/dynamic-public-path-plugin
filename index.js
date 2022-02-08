@@ -1,4 +1,4 @@
-﻿/**
+/**
  * @author web-daddy zhuchunyong
  * @createTime 2022/1/24
  */
@@ -8,19 +8,19 @@ function DynamicPublicPath(options) {
   this._name = "dynamicPublicPathPlugin";
 }
 function buf(path, source) {
-  var buf = [];
-  buf.push(source);
-  buf.push("");
-  buf.push("// Dynamic assets path override (dynamic-public-path-plugin)");
-  buf.push(`
-        if(typeof window !== 'undefined') {
-            __webpack_require__.p = (${path}) || "";
-        }
-    `);
-  return buf.join("\n");
+  if (!source) {
+    return source;
+  }
+  var newSource = [];
+  newSource.push(source);
+  newSource.push('if( typeof __webpack_require__ !== "undefined" ) {');
+  newSource.push("    __webpack_require__.p = " + path + ";");
+  newSource.push("}");
+  return newSource.join("\n");
 }
 DynamicPublicPath.prototype.apply = function (compiler) {
-  var DynamicPublicPathStr = this.options && this.options.dynamicPublicPath;
+  const self = this;
+  var DynamicPublicPathStr = self.options && self.options.dynamicPublicPath;
   if (!DynamicPublicPathStr) {
     console.error(
       "DynamicPublicPathStr: no output.runtimePublicPath is specified. This plugin will do nothing."
@@ -28,27 +28,16 @@ DynamicPublicPath.prototype.apply = function (compiler) {
     return;
   }
   if (compiler.hooks && compiler.hooks.thisCompilation) {
-    compiler.hooks.thisCompilation.tap(this._name, function (compilation) {
-      if (typeof compilation.mainTemplate.plugin === "function") {
-        //   兼容webpack4
-        compilation.mainTemplate.plugin(
-          "require-extensions",
-          function (source, chunk, hash) {
-            return buf(DynamicPublicPathStr, source);
-          }
-        );
-      } else {
-        //   兼容webpack5
-        compilation.mainTemplate.hooks.requireExtensions.tap(
-          "require-extensions",
-          function (source, chunk, hash) {
-            return buf(DynamicPublicPathStr, source);
-          }
-        );
-      }
+    compiler.hooks.thisCompilation.tap(self._name, function (compilation) {
+      compilation.mainTemplate.hooks.requireExtensions.tap(
+        self._name,
+        function (source, chunk, hash) {
+          return buf(DynamicPublicPathStr, source);
+        }
+      );
     });
   } else {
-    //   兼容webpack4之前的
+    //   兼容webpack4之前版本
     compiler.plugin("this-compilation", function (compilation) {
       compilation.mainTemplate.plugin(
         "require-extensions",

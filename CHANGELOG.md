@@ -4,3 +4,5 @@
 - Compatible with webpack4 processing
 ## 1.1.1 
 - Document description update
+## 1.1.2
+- Error reporting and repair after webpack5 packaging
